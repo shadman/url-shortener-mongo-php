@@ -12,9 +12,9 @@ $config = array(
 
 $connection = new MongoClient($config['connection_string'], array("username" => $config['username'], "password" => $config['password'], "db" => $config['db']));
 
-//$collection = $connection->shortener_url;
+$collection = $connection->shortener_url;
 //$collection = $connection->selectCollection($connection['dbname'], 'shortener_url');
-$collection = $connection->selectDB('shortener_url')->selectCollection('shortener_url');
+//$collection = $connection->selectDB('shortener_url')->selectCollection('shortener_url');
 
 $records = $collection->find();
 
