@@ -1,6 +1,8 @@
 <?php
 error_reporting(E_ALL);
 
+getenv("MONGO_URL");
+
 $config = array(
 'username' => 'shadman',
 'password' => 'shan0321',
