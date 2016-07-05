@@ -5,7 +5,7 @@ $config = array(
 'username' => 'shadman',
 'password' => 'shan0321',
 'dbname'   => 'shortener-url',
-'connection_string'=> sprintf('mongodb://%s:%d/%s -u %s -p %s','mongo ds015690.mlab.com','15690','shortener-url','shadman','shan0321')
+'connection_string'=> sprintf('mongodb://%s:%d/%s','mongo ds015690.mlab.com','15690','shortener-url')
 );
 
 #mongo ds015690.mlab.com:15690/shortener-url -u shadman -p shan0321
