@@ -1,31 +1,30 @@
 <?php
-error_reporting(E_ALL);
-
-$config = array(
-'username' => 'shadman',
-'password' => 'shan0321',
-'db'   => 'shortener-url',
-'connection_string'=> sprintf('mongodb://%s:%d','ds015690.mlab.com','15690')
-);
-
-try {
-	$connection = new MongoClient($config['connection_string'], 
-								  array("username" => $config['username'], "password" => $config['password'], "db" => $config['db']) );
-	$db = $connection->selectDB($config['db']);
-} catch (Exception $e) {
-    print_r($e);
-}
+require 'config/config.php';
+require 'classes/database.php';
+require 'models/shortener_url.php';
 
 
-try {
+	# If form posted
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-	$collection = new MongoCollection($db, 'shortener_url');
+		$shortenerURL = new shortenerURL;
+		$response = $shortenerURL->createShortURL($_POST['url']);
+		if (is_array($response)===true) {
+			$msg = "Your short url: ". 'http://localhost/'. $response['short_url'];
+		}
 
-	$cursor = $collection->find();
-	foreach ($cursor as $doc) {
-	    var_dump($doc);
+	}
+	else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+		//redirect to desired url
 	}
 
-} catch (Exception $e) {
-    print_r($e);
-}
+?>
+
+<form action="" method="post">
+
+	<input type="text" name="url">
+	<input type="submit" value="Generate Short URL">
+
+</form> 
+
+<?php echo $msg; ?>
