@@ -17,10 +17,7 @@ try {
 $db = $connection->selectDB('shortener-url');
 $collection = new MongoCollection($db, 'shortener_url');
 
-$js = "function() {
-    return this.name == 'Joe' || this.age == 50;
-}";
-$cursor = $collection->find(array('$where' => $js));
+$cursor = $collection->find();
 foreach ($cursor as $doc) {
     var_dump($doc);
 }
