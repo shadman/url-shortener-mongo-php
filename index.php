@@ -18,6 +18,6 @@ $collection = $connection->selectDB('shortener_url')->selectCollection('shortene
 
 $records = $collection->find();
 
-foreach ($records as $record) {
-	echo $record->url;
-}
+//foreach ($records as $record) {
+//	echo $record->url;
+//}
