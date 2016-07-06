@@ -17,7 +17,14 @@ $connection = new MongoClient($config['connection_string'], array("username" => 
 $collection = $connection->selectDB('shortener_url')->selectCollection('shortener_url');
 
 $records = $collection->find();
-print_r($records);
+
+try {
+	$jokesArray = iterator_to_array($records);
+	print_r($jokesArray);
+} catch (Exception $e) {
+    print_r($e);
+}
+
 //foreach ($records as $record) {
 //	echo $record->url;
 //}
