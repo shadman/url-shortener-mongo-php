@@ -17,7 +17,7 @@ $connection = new MongoClient($config['connection_string'], array("username" => 
 $collection = $connection->selectDB('shortener_url')->selectCollection('shortener_url');
 
 $records = $collection->find();
-
+print_r($records);
 //foreach ($records as $record) {
 //	echo $record->url;
 //}
