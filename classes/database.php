@@ -12,9 +12,9 @@ class Database {
 	public function __construct(){
 
 		try {
-			$this->connect = new MongoClient(self::connectionString(), 
+			$connect = new MongoClient(self::connectionString(), 
 										  array("username" => Config::$DB_USERNAME, "password" => Config::$DB_PASSWORD, "db" => Config::$DB_NAME) );
-			$this->connection = $this->connect->selectDB(Config::$DB_NAME);
+			$this->connection = $connect->selectDB(Config::$DB_NAME);
 		} catch (Exception $e) {
 		    echo $e->getMessage();
 		}

@@ -34,13 +34,32 @@ class shortenerURL {
 			$collection = $database->getCollection('shortener_url');
 
 			$where = array( 'short_url' => $short_url );
-			$records = $collection->find($where)->limit(1);
+			$records = $collection->findOne($where);
 			
 			if ($records->count()==0) return false;
 
 			return true;
 
 		} catch (Exception $e) {
+			return $e->getMessage();
+		}
+
+	}
+
+	# Retrive url
+	function getRecord($short_code){
+		global $database;
+
+		try {
+			$collection = $database->getCollection('shortener_url');
+
+			$where = array( 'short_url' => $short_code );
+			$data = $collection->findOne($where);
+			//$record = iterator_to_array($data); 
+			return $data;
+
+		} catch (Exception $e) {
+			echo 2;
 			return $e->getMessage();
 		}
 

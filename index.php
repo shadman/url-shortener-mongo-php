@@ -14,17 +14,29 @@ require 'models/shortener_url.php';
 		}
 
 	}
-	else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+	else if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['short_code']) {
 		//redirect to desired url
+		$short_code = $_GET['short_code'];
+		$shortenerURL = new shortenerURL;
+		$record = $shortenerURL->getRecord($short_code);
+
+		header( "Location: ".$record['url'] );
+		exit;
 	}
 
 ?>
-
+<html>
+<head>
+</head>
+<body>
 <form action="" method="post">
 
-	<input type="text" name="url">
+	<input type="text" name="url" placeholder="http://example.com" class="url-box">
 	<input type="submit" value="Generate Short URL">
 
 </form> 
 
 <?php echo $msg; ?>
+
+</body>
+</html>
