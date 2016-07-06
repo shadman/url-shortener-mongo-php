@@ -10,7 +10,7 @@ $config = array(
 
 try {
 	$connection = new MongoClient($config['connection_string'], 
-								  array("username" => $config['username'], "password" => $config['password']));
+								  array("username" => $config['username'], "password" => $config['password'], "db" => $config['db']);
 	$db = $connection->selectDB($config['db']);
 } catch (Exception $e) {
     print_r($e);
