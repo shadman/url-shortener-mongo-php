@@ -12,19 +12,38 @@ $config = array(
 
 $connection = new MongoClient($config['connection_string'], array("username" => $config['username'], "password" => $config['password'], "db" => $config['db']));
 
+try {
+
+$db = $connection->selectDB('shortener-url');
+$collection = new MongoCollection($db, 'shortener_url');
+
+$js = "function() {
+    return this.name == 'Joe' || this.age == 50;
+}";
+$cursor = $collection->find(array('$where' => $js));
+foreach ($cursor as $doc) {
+    var_dump($doc);
+}
+
+echo '=======--------=========';
 //$collection = $connection->shortener_url;
 //$collection = $connection->selectCollection($connection['dbname'], 'shortener_url');
-$collection = $connection->selectDB('shortener_url')->selectCollection('shortener_url');
+//$collection = $connection->selectDB('shortener_url')->selectCollection('shortener_url');
+$collection = $connection->database->shortener_url;
 
 $records = $collection->find();
 
-try {
+	print_r($records);
+	echo '--------<br>';
 	$jokesArray = iterator_to_array($records);
+	echo '============<br>';
 	print_r($jokesArray);
+	echo '---========---<br>';
+
+	foreach ($records as $record) {
+		print_r($record);
+	}
+
 } catch (Exception $e) {
     print_r($e);
 }
-
-//foreach ($records as $record) {
-//	echo $record->url;
-//}
