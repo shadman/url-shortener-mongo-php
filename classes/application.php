@@ -52,7 +52,7 @@ class Application {
 
 	function getProtocol() {
 		$protocol = ( stripos($_SERVER['SERVER_PROTOCOL'],'https') === true || stripos($_SERVER['HTTP_X_FORWARDED_PROTO'],'https') === true ) ? 'https://' : 'http://';
-		return
+		return $protocol;
 	}
 
 }
