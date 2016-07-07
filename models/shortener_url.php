@@ -34,7 +34,7 @@ class shortenerURL {
 			$collection = $database->getCollection('shortener_url');
 
 			$where = array( 'short_url' => $short_url );
-			$records = $collection->findOne($where);
+			$records = $collection->find($where)->limit(1);
 			
 			if ($records->count()==0) return false;
 
@@ -47,15 +47,35 @@ class shortenerURL {
 	}
 
 	# Retrive url
-	function getRecord($short_code){
+	function getRecordByShortCode($short_code){
 		global $database;
 
 		try {
 			$collection = $database->getCollection('shortener_url');
 
 			$where = array( 'short_url' => $short_code );
-			$data = $collection->findOne($where);
-			//$record = iterator_to_array($data); 
+			$fields = array( 'url' => 1 );
+			$data = $collection->findOne($where, $fields);
+			return $data;
+
+		} catch (Exception $e) {
+			echo 2;
+			return $e->getMessage();
+		}
+
+	}
+
+	
+	# Retrive url
+	function getRecordById($id){
+		global $database;
+
+		try {
+			$collection = $database->getCollection('shortener_url');
+
+			$where = array( '_id' => new MongoId($id) );
+			$fields = array( 'short_url' => 1 );
+			$data = $collection->findOne($where, $fields);
 			return $data;
 
 		} catch (Exception $e) {
@@ -66,6 +86,7 @@ class shortenerURL {
 	}
 
 
+	# Create a record in database collection
 	function insertShortURL($shortURL, $url){
 		global $database;
 		
@@ -81,5 +102,15 @@ class shortenerURL {
 
 	}
 
+
+	function validateURL($url) {
+
+		if (!isset($url))
+		  return 202;
+		else if (!filter_var($url, FILTER_VALIDATE_URL) === true) 
+		  return 203;
+
+		return true;
+	}
 
 }
