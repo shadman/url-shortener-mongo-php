@@ -8,7 +8,6 @@ require 'models/shortener_url.php';
 
 	require 'concerns/process.php';
 
-print_r($_SERVER);
 ?>
 <html>
 <head>

@@ -41,8 +41,8 @@ class Application {
 	}
 
 	function getProjectPath() {
-		$temp_url = ( str_replace('index.php', '', $this->getHost()) ) ;
-		return $temp_url;
+		$path = ( str_replace('index.php', '', $this->getHost()) ) ;
+		return $path;
 	}
 
 	function getTempShortURL($short_url) {
@@ -51,11 +51,7 @@ class Application {
 	}
 
 	function getProtocol() {
-		echo $_SERVER['HTTP_X_FORWARDED_PROTO'];
-		echo '===';
-		echo $_SERVR['FORWARDED_PROTO'];
-		echo '--';
-		$protocol = ( stripos($_SERVER['SERVER_PROTOCOL'],'https') === true || stripos($_SERVER['HTTP_X_FORWARDED_PROTO'],'https') === true ) ? 'https://' : 'http://';
+		$protocol = ( stripos($_SERVER['SERVER_PROTOCOL'],'https') !== false || stripos($_SERVER['HTTP_X_FORWARDED_PROTO'],'https') !== false ) ? 'https://' : 'http://';
 		return $protocol;
 	}
 
