@@ -40,9 +40,18 @@ class Application {
 	  return $host;
 	}
 
+	function getProjectPath() {
+		$temp_url = ( str_replace('index.php', '', $this->getHost()) ) ;
+		return $temp_url;
+	}
+
 	function getTempShortURL($short_url) {
-		$temp_url = ( str_replace('index.php', '', self::getHost()) ) . $short_url;
+		$temp_url = ( str_replace('index.php', '', $this->getHost()) ) . $short_url;
 		return $temp_url;
 	}
 
 }
+
+
+global $application;
+$application = new Application;
