@@ -18,7 +18,7 @@ https://shortener-url-app.herokuapp.com
 
 ## Deployment:
 
-### Enable Rewrite mode in PHP for .htaccess
+### Enable Rewrite mode in PHP for .htaccess:
 
 $  sudo a2enmod rewrite
 
@@ -51,7 +51,7 @@ Copy/Extract/Clone given code inside your PHP project directory
 example: /var/www/shortener-url
 
 
-### Run your deployed PHP code via browsers
+### Run your deployed PHP code via browsers:
 
 example: http://localhost/shortener-url/
 
