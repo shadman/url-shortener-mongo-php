@@ -36,7 +36,7 @@ class Application {
 	}
 
 	function getHost() {
-	  $host = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
+	  $host = $this->getProtocol().'://'.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 	  return $host;
 	}
 
@@ -48,6 +48,11 @@ class Application {
 	function getTempShortURL($short_url) {
 		$temp_url = ( str_replace('index.php', '', $this->getHost()) ) . $short_url;
 		return $temp_url;
+	}
+
+	function getProtocol() {
+		$protocol = ( stripos($_SERVER['SERVER_PROTOCOL'],'https') === true || stripos($_SERVER['HTTP_X_FORWARDED_PROTO'],'https') === true ) ? 'https://' : 'http://';
+		return
 	}
 
 }
