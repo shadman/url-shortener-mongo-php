@@ -1,4 +1,5 @@
 <?php
+
 require 'config/config.php';
 require 'classes/database.php';
 
@@ -10,7 +11,7 @@ require 'models/shortener_url.php';
 ?>
 <html>
 <head>
-	<link rel="stylesheet" href="/styles/style.css">
+	<link rel="stylesheet" href="<?php echo $application->getProjectPath();?>/styles/style.css">
 	<title>Shortener URL Application</title>
 </head>
 <body>
