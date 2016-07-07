@@ -1,51 +1,61 @@
+
 # URL Shortener; with Mongo and PHP
 
 
-# Features:
+## Live URL: https://shortener-url-app.herokuapp.com
 
 
+## Specifications:
+- Developed in core PHP.
+- Using MongoDB for large number of traffic.
+- You can create a short URL of any long URL.
+- Every short url will be unique.
+- High performance can support morethan 500 million users.
+- Using Free MongoDB from https://mlab.com. (Although its great but you may face some downtime due to free package).
+- Added URL rewriting for shortest URL on server to experince a live taste.
 
-# Deployment
 
-## Enable Rewrite mode in PHP for .htaccess
+## Deployment
+
+### Enable Rewrite mode in PHP for .htaccess
 
 $  sudo a2enmod rewrite
 
 $  sudo service apache2 restart
 
 
-## Enable .htaccess rewrite on apache settings
+### Enable .htaccess rewrite on apache settings
 
 $  sudo vim /etc/apache2/apache2.conf
 
-<Directory />
+< Directory />
 	.. 
 	..
 	AllowOverride all
 	..
-</Directory>
+< /Directory>
 
-<Directory /var/www/>
+< Directory /var/www/>
 	..
 	..
 	AllowOverride all
 	..
-</Directory>
+< /Directory>
 
 
-## Extract PHP code
+### Extract PHP code
 
 Copy/Extract/Clone given code inside your PHP project directory
 
 example: /var/www/shortener-url
 
 
-## Run your deployed PHP code via browsers
+### Run your deployed PHP code via browsers
 
 example: http://localhost/shortener-url/
 
 
-## Database settings:
+### Database settings:
 
 If you have your own mongoDB, then you may add your database configuration here:
 
@@ -73,10 +83,10 @@ Cheers !
 
 -------
 
-# Setup MongoDB on your local machine for PHP
+## Setup MongoDB on your local machine for PHP
 
 
-## Setup MongoDB for PHP in Ubuntu 14
+### Setup MongoDB for PHP in Ubuntu 14
 
 $  sudo apt-get install php5-mongo
 
@@ -94,13 +104,13 @@ $  sudo service apache2 restart
 
 
 
-## Setup/Create MongoDB Free Account (if required)
+### Setup/Create MongoDB Free Account (if required)
 
 https://mlab.com (but still mongo client required to connect mongoDB)
 
 OR
 
-## Deploy MongoDB Locally
+### Deploy MongoDB Locally
 
 Reference: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
@@ -116,3 +126,5 @@ $  sudo service mongod start
 
 $  sudo service mongod restart / stop
 
+
+Good Luck ! 
