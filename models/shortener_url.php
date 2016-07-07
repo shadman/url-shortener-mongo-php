@@ -34,9 +34,9 @@ class shortenerURL {
 			$collection = $database->getCollection('shortener_url');
 
 			$where = array( 'short_url' => $short_url );
-			$records = $collection->find($where)->limit(1);
+			$records = $collection->find($where)->count();
 			
-			if ($records->count()==0) return false;
+			if ($records==0) return false;
 
 			return true;
 
@@ -46,7 +46,25 @@ class shortenerURL {
 
 	}
 
-	# Retrive url
+	# Update views
+	function updateViews($id) {
+		global $database;
+		
+		$collection = $database->getCollection('shortener_url');
+
+		$where = array( '_id' => new MongoId($id) );
+		$record = $collection->findOne($where);
+
+		if ( isset($record) ) {
+			$where = array( '_id' => new MongoId($id) );
+			$record['views'] = $record['views']+1;
+			$collection->findAndModify($where, $record);
+		}
+		
+	}
+
+
+	# Retrive url by short code
 	function getRecordByShortCode($short_code){
 		global $database;
 
@@ -54,19 +72,18 @@ class shortenerURL {
 			$collection = $database->getCollection('shortener_url');
 
 			$where = array( 'short_url' => $short_code );
-			$fields = array( 'url' => 1 );
+			$fields = array( '_id' => 1 , 'url' => 1 );
 			$data = $collection->findOne($where, $fields);
 			return $data;
 
 		} catch (Exception $e) {
-			echo 2;
 			return $e->getMessage();
 		}
 
 	}
 
 	
-	# Retrive url
+	# Retrive url by id
 	function getRecordById($id){
 		global $database;
 
@@ -92,7 +109,7 @@ class shortenerURL {
 		try {
 			$collection = $database->getCollection('shortener_url');
 
-			$data = array( 'short_url' => $shortURL, 'url' => $url, 'views' => 0 );
+			$data = array( 'short_url' => $shortURL, 'url' => $url, 'views' => 0, 'created_at' => date('Y-m-d H:i:s') );
 			$collection->insert($data);
 			return $data;
 		} catch (Exception $e) {

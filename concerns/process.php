@@ -9,13 +9,13 @@
 		if ( $validate_request === true ) {
 			$response = $shortenerURL->createShortURL($_POST['url']);
 			if (is_array($response)===true) {
-				$id = Application::convertObjecttoString($response['_id']);
+				$id = $application->convertObjecttoString($response['_id']);
 
-				Application::redirectToURL('/post/'.$id);
+				$application->redirectToURL($application->getProjectPath().'post/'.$id);
 				exit;
 			}
 		} else {
-			$msg = Application::errorMessage($validate_request);
+			$msg = $application->errorMessage($validate_request);
 		}
 
 
@@ -27,10 +27,10 @@
 		$shortenerURL = new shortenerURL;
 		$response = $shortenerURL->getRecordById($id);
 		if (is_array($response)===true) {
-			$complete_url = Application::getTempShortURL($response['short_url']);
-			$msg = Application::getLinkToDisplay($complete_url);
+			$complete_url = $application->getTempShortURL($response['short_url']);
+			$msg = $application->getLinkToDisplay($complete_url);
 		} else {
-			$msg = Application::errorMessage(200);
+			$msg = $application->errorMessage(200);
 		}
 
 
@@ -41,7 +41,12 @@
 		$shortenerURL = new shortenerURL;
 		$record = $shortenerURL->getRecordByShortCode($short_code);
 
-		Application::redirectToURL($record['url']);
-		exit;
-
+		echo $id = $application->convertObjecttoString($record['_id']);
+		if ($id) { 
+			$shortenerURL->updateViews($id);
+			$application->redirectToURL($record['url']);
+			exit;
+		} else {
+			$msg = $application->errorMessage(200);
+		}
 	} 
