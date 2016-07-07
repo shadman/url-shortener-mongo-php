@@ -11,7 +11,7 @@
 			if (is_array($response)===true) {
 				$id = Application::convertObjecttoString($response['_id']);
 
-				Application::redirectToURL('?id='.$id);
+				Application::redirectToURL('/post/'.$id);
 				exit;
 			}
 		} else {
