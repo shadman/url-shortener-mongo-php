@@ -36,7 +36,7 @@ class Application {
 	}
 
 	function getHost() {
-	  $host = $this->getProtocol()..$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
+	  $host = $this->getProtocol().$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 	  return $host;
 	}
 
