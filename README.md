@@ -2,7 +2,8 @@
 # URL Shortener; with Mongo and PHP
 
 
-## Live URL: https://shortener-url-app.herokuapp.com
+## Live URL: 
+https://shortener-url-app.herokuapp.com
 
 
 ## Specifications:
@@ -15,7 +16,7 @@
 - Added URL rewriting for shortest URL on server to experince a live taste.
 
 
-## Deployment
+## Deployment:
 
 ### Enable Rewrite mode in PHP for .htaccess
 
@@ -24,26 +25,26 @@ $  sudo a2enmod rewrite
 $  sudo service apache2 restart
 
 
-### Enable .htaccess rewrite on apache settings
+### Enable .htaccess rewrite on apache settings:
 
 $  sudo vim /etc/apache2/apache2.conf
 
-< Directory />
-	.. 
-	..
-	AllowOverride all
-	..
-< /Directory>
+	<Directory />
+		.. 
+		..
+		AllowOverride all
+		..
+	</Directory>
 
-< Directory /var/www/>
-	..
-	..
-	AllowOverride all
-	..
-< /Directory>
+	<Directory /var/www/>
+		..
+		..
+		AllowOverride all
+		..
+	</Directory>
 
 
-### Extract PHP code
+### Extract PHP code:
 
 Copy/Extract/Clone given code inside your PHP project directory
 
@@ -83,15 +84,15 @@ Cheers !
 
 -------
 
-## Setup MongoDB on your local machine for PHP
+## Setup MongoDB on your local machine for PHP:
 
 
-### Setup MongoDB for PHP in Ubuntu 14
+### Setup MongoDB for PHP in Ubuntu 14:
 
 $  sudo apt-get install php5-mongo
 
 
-### Download Latest One (if you don't have it)
+### Download Latest One (if you don't have it):
 
 https://pecl.php.net/package/mongo
 
@@ -104,13 +105,13 @@ $  sudo service apache2 restart
 
 
 
-### Setup/Create MongoDB Free Account (if required)
+### Setup/Create MongoDB Free Account (if required):
 
 https://mlab.com (but still mongo client required to connect mongoDB)
 
 OR
 
-### Deploy MongoDB Locally
+### Deploy MongoDB Locally:
 
 Reference: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
