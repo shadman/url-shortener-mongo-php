@@ -1,0 +1,27 @@
+body {
+	padding-top: 100px;
+	margin: auto 0;
+	text-align: center;
+}
+.url-box {
+	border:1px solid #CFCFCF;
+	font-size: 26px;
+	padding: 10px;
+	width: 50%;
+}
+.generate-button {
+	border:1px solid #000066;
+	color: #FFF;
+	padding: 5px 10px;
+	background-color: #0066cc;
+	font-size: 20px;
+	margin-top: 20px;
+}
+.message-area {
+	background-color: #66ffcc;
+	border:1px dashed #009999;
+	padding: 20px;
+	margin: 0 auto;
+	margin-top: 40px;
+	width: 50%;
+}
