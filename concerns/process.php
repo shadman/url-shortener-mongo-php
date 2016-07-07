@@ -20,7 +20,7 @@
 
 
 	// Dispaying posted url results, to avoid resubmission
-	} else if ( $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'] && isset($_GET['post']) ) {
+	} else if ( $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) && isset($_GET['post']) ) {
 
 		
 		$id = $_GET['id'];
