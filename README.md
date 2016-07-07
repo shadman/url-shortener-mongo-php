@@ -3,6 +3,13 @@
 
 # Deployment
 
+## Enable Rewrite mode for .htaccess
+
+$  sudo a2enmod rewrite
+
+$  sudo service apache2 restart
+
+
 
 
 

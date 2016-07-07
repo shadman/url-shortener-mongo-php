@@ -20,7 +20,7 @@
 
 
 	// Dispaying posted url results, to avoid resubmission
-	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['id']) {
+	} else if ( $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) ) {
 
 		
 		$id = $_GET['id'];
@@ -35,7 +35,7 @@
 
 
 	// Redirect to desired short URL destination
-	} else if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['short_code']) {
+	} else if ( $_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['short_code']) ) {
 		
 		$short_code = $_GET['short_code'];
 		$shortenerURL = new shortenerURL;
