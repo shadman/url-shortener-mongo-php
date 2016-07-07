@@ -36,7 +36,7 @@ class Application {
 	}
 
 	function getHost() {
-	  $host = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
+	  $host = $_SERVER['REQUEST_SCHEME'].'://'.(@str_replace('index.php', '', $_SERVER['SERVER_NAME'])).$_SERVER['SCRIPT_NAME'];
 	  return $host;
 	}
 
