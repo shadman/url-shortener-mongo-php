@@ -1,17 +1,75 @@
 # URL Shortener; with Mongo and PHP
 
 
+# Features:
+
+
+
 # Deployment
 
-## Enable Rewrite mode for .htaccess
+## Enable Rewrite mode in PHP for .htaccess
 
 $  sudo a2enmod rewrite
 
 $  sudo service apache2 restart
 
 
+## Enable .htaccess rewrite on apache settings
+
+$  sudo vim /etc/apache2/apache2.conf
+
+<Directory />
+	.. 
+	..
+	AllowOverride all
+	..
+</Directory>
+
+<Directory /var/www/>
+	..
+	..
+	AllowOverride all
+	..
+</Directory>
 
 
+## Extract PHP code
+
+Copy/Extract/Clone given code inside your PHP project directory
+
+example: /var/www/shortener-url
+
+
+## Run your deployed PHP code via browsers
+
+example: http://localhost/shortener-url/
+
+
+## Database settings:
+
+If you have your own mongoDB, then you may add your database configuration here:
+
+vim <PROJECT_DIRECTORY>/config/config.php
+
+If you have created different collection (table) for short url records, you may update here:
+
+	...
+	...
+
+    # All collection names 
+    static $COLLECTION_NAMES    	= array(
+    										'shortener_url' => '<ADD_YOUR_SHORTENER_URL_COLLECTION_NAME_HERE>' 
+    								  );
+
+    ...
+    ...
+
+
+***** NOTE: If you want to make your own local mongoDB or want to create free online please follow below instructions to create and handle.
+
+Deployment Completed. 
+
+Cheers !
 
 -------
 
