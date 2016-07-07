@@ -79,7 +79,6 @@ class shortenerURL {
 			return $data;
 
 		} catch (Exception $e) {
-			echo 2;
 			return $e->getMessage();
 		}
 
