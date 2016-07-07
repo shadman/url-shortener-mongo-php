@@ -36,7 +36,7 @@ class Application {
 	}
 
 	function getHost() {
-	  $host = $this->getProtocol().'://'.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
+	  $host = $this->getProtocol()..$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 	  return $host;
 	}
 
@@ -51,6 +51,10 @@ class Application {
 	}
 
 	function getProtocol() {
+		echo $_SERVER['HTTP_X_FORWARDED_PROTO'];
+		echo '===';
+		echo $_SERVR['FORWARDED_PROTO'];
+		echo '--';
 		$protocol = ( stripos($_SERVER['SERVER_PROTOCOL'],'https') === true || stripos($_SERVER['HTTP_X_FORWARDED_PROTO'],'https') === true ) ? 'https://' : 'http://';
 		return $protocol;
 	}
