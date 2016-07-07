@@ -36,12 +36,12 @@ class Application {
 	}
 
 	function getHost() {
-	  $host = $_SERVER['REQUEST_SCHEME'].'://'.(@str_replace('index.php', '', $_SERVER['SERVER_NAME'])).$_SERVER['SCRIPT_NAME'];
+	  $host = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
 	  return $host;
 	}
 
 	function getTempShortURL($short_url) {
-		$temp_url = self::getHost() . '?short_code=' . $short_url;
+		$temp_url = ( str_replace('index.php', '', self::getHost()) ) . $short_url;
 		return $temp_url;
 	}
 
