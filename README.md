@@ -1,5 +1,5 @@
 
-# URL Shortener; with Mongo and PHP
+# URL Shortener Generator with Mongo and PHP
 
 
 ## Live URL: 
@@ -14,7 +14,8 @@ https://shortener-url-app.herokuapp.com
 - High performance can support morethan 500 million users.
 - Using Free MongoDB from https://mlab.com. (Although its great but you may face some downtime due to free package).
 - Added URL rewriting for shortest URL on server to experince a live taste.
-
+- Tracking number of hits for every short URL
+- Storing creation date time as well
 
 ## Deployment:
 
