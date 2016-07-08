@@ -16,6 +16,7 @@ https://shortener-url-app.herokuapp.com
 - Added URL rewriting for shortest URL on server to experince a live taste.
 - Tracking number of hits for every short URL
 - Storing creation date time as well
+- Can easily integrate short dedicated domain name for url
 
 ## Deployment:
 
